@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>زعفران اصیل ایرانی</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
+        @font-face {
+            font-family: 'IranNastaliq';
+            src: url('https://cdn.fontcdn.ir/Font/Persian/Nastaliq/IranNastaliq.woff') format('woff');
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fff;
+            color: #333;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+
+        [lang="en"], [lang="fr"], [lang="ru"], [lang="sv"] {
+            display: none !important;
+        }
+
+        [lang="fa"] {
+            display: inline-block;
+        }
+
+        body.english [lang="en"],
+        body.french [lang="fr"],
+        body.russian [lang="ru"],
+        body.swedish [lang="sv"] {
+            display: inline-block !important;
+        }
+
+        body.english [lang="fa"],
+        body.english [lang="fr"],
+        body.english [lang="ru"],
+        body.english [lang="sv"],
+        body.french [lang="fa"],
+        body.french [lang="en"],
+        body.french [lang="ru"],
+        body.french [lang="sv"],
+        body.russian [lang="fa"],
+        body.russian [lang="en"],
+        body.russian [lang="fr"],
+        body.russian [lang="sv"],
+        body.swedish [lang="fa"],
+        body.swedish [lang="en"],
+        body.swedish [lang="fr"],
+        body.swedish [lang="ru"] {
+            display: none !important;
+        }
+
+        body.english,
+        body.french,
+        body.russian,
+        body.swedish {
+            direction: ltr;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .navbar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: #660000;
+        }
+
+        .nav-links a:hover {
+            color: #400000;
+        }
+
+        .nav-links a i {
+            font-size: 1.2rem;
+            color: #660000;
+        }
+
+        .nav-links a:hover i {
+            color: #400000;
+        }
+
+        .lang-switcher {
+            position: relative;
+            display: inline-block;
+        }
+
+        .lang-switch-btn {
+            background: none;
+            border: 2px solid #660000;
+            color: #660000;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
+
+        .lang-switch-btn:hover {
+            background: #660000;
+            color: white;
+        }
+
+        .lang-dropdown {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            border-radius: 0.5rem;
+            z-index: 1001;
+            top: 100%;
+            right: 0;
+            margin-top: 0.5rem;
+        }
+
+        .lang-dropdown.show {
+            display: block;
+        }
+
+        .lang-option {
+            color: #660000;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .lang-option:hover {
+            background-color: #fff3f3;
+        }
+
+        .lang-option.active {
+            background-color: #660000;
+            color: white;
+        }
+
+        .logo {
+            color: #FFD700;
+            font-size: 2rem;
+            text-decoration: none;
+            font-weight: bold;
+            text-shadow: 0 0 2px #FFF8DC, 0 0 4px #DAA520;
+        }
+
+        .logo, h1, h2, h3 {
+            font-family: 'IranNastaliq', 'Vazirmatn', sans-serif;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            font-weight: normal;
+            color: #660000;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        .products h2 {
+            font-size: 3.5rem;
+            font-weight: normal;
+        }
+
+        .about-text h2 {
+            font-size: 3.5rem;
+            font-weight: normal;
+        }
+
+        .footer-section h3 {
+            font-family: 'IranNastaliq', 'Vazirmatn', sans-serif;
+            font-size: 2rem;
+            font-weight: normal;
+            color: #FFD700;
+            text-shadow: 0 0 2px #FFF8DC, 0 0 4px #DAA520;
+        }
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/hero.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #660000;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #660000;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        .btn {
+            background-color: #660000;
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #400000;
+        }
+
+        .products {
+            padding: 5rem 1rem;
+            background-color: #FEF3C7;
+        }
+
+        .products-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .product-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-info p {
+            color: #6B7280;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            color: #D97706;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        .about {
+            padding: 5rem 1rem;
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            height: 400px;
+            background: url('images/about.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 0.5rem;
+        }
+
+        .about-text p {
+            color: #6B7280;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background-color: #660000;
+            color: white;
+            padding: 3rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #FFD700;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 1px #FFF8DC;
+        }
+
+        .footer-section a:hover {
+            color: #DAA520;
+            text-shadow: 0 0 4px #FFD700;
+        }
+
+        .copyright {
+            text-align: center;
+            color: #FFD700;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #DAA520;
+            text-shadow: 0 0 2px #FFF8DC;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1rem;
+            justify-content: center;
+        }
+
+        .social-icons a {
+            color: #FFD700;
+            font-size: 2rem;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #DAA520;
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                height: 300px;
+            }
+        }
+
+        .search-container {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .search-icon {
+            color: #660000;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .search-icon:hover {
+            color: #400000;
+        }
+
+        .search-bar {
+            position: absolute;
+            right: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            margin-right: 0.5rem;
+        }
+
+        .search-bar.active {
+            width: 200px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 2px solid #660000;
+            border-radius: 0.5rem;
+            outline: none;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+
+        .search-input:focus {
+            border-color: #400000;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="#" class="logo">
+                <span lang="fa">زرنوش</span>
+                <span lang="en">Zarnoush</span>
+                <span lang="fr">Zarnoush</span>
+                <span lang="ru">Зарнуш</span>
+                <span lang="sv">Zarnoush</span>
+            </a>
+            <div class="nav-links">
+                <div class="lang-switcher">
+                    <button onclick="toggleLangMenu()" class="lang-switch-btn">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                    <div id="langDropdown" class="lang-dropdown">
+                        <a onclick="switchLanguage('fa')" class="lang-option active">فارسی</a>
+                        <a onclick="switchLanguage('en')" class="lang-option">English</a>
+                        <a onclick="switchLanguage('fr')" class="lang-option">Français</a>
+                        <a onclick="switchLanguage('ru')" class="lang-option">Русский</a>
+                        <a onclick="switchLanguage('sv')" class="lang-option">Svenska</a>
+                    </div>
+                </div>
+                <a href="#home">
+                    <i class="fas fa-home"></i>
+                    <span lang="fa" class="sr-only">خانه</span>
+                    <span lang="en" class="sr-only">Home</span>
+                    <span lang="fr" class="sr-only">Accueil</span>
+                    <span lang="ru" class="sr-only">Главная</span>
+                    <span lang="sv" class="sr-only">Hem</span>
+                </a>
+                <a href="#products">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span lang="fa" class="sr-only">محصولات</span>
+                    <span lang="en" class="sr-only">Products</span>
+                    <span lang="fr" class="sr-only">Produits</span>
+                    <span lang="ru" class="sr-only">Продукты</span>
+                    <span lang="sv" class="sr-only">Produkter</span>
+                </a>
+                <a href="#about">
+                    <i class="fas fa-question fa-lg"></i>
+                    <span lang="fa" class="sr-only">درباره ما</span>
+                    <span lang="en" class="sr-only">About</span>
+                    <span lang="fr" class="sr-only">À propos</span>
+                    <span lang="ru" class="sr-only">О нас</span>
+                    <span lang="sv" class="sr-only">Om oss</span>
+                </a>
+                <a href="#contact">
+                    <i class="fas fa-phone"></i>
+                    <span lang="fa" class="sr-only">تماس با ما</span>
+                    <span lang="en" class="sr-only">Contact</span>
+                    <span lang="fr" class="sr-only">Contact</span>
+                    <span lang="ru" class="sr-only">Контакты</span>
+                    <span lang="sv" class="sr-only">Kontakt</span>
+                </a>
+                <div class="search-container">
+                    <i class="fas fa-search search-icon" onclick="toggleSearch()"></i>
+                    <div class="search-bar">
+                        <input type="text" class="search-input" placeholder="جستجو..." onkeyup="searchSite(this.value)">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>
+                <span lang="fa">زعفران اصیل ایرانی</span>
+                <span lang="en">Authentic Iranian Saffron</span>
+                <span lang="fr">Safran Authentic Iranien</span>
+                <span lang="ru">Аутентичный Иранский Шафран</span>
+                <span lang="sv">Äkta Iransk Saffran</span>
+            </h1>
+            <p>
+                <span lang="fa">طعم و رنگ بی‌نظیر طبیعت</span>
+                <span lang="en">Unique Taste and Color of Nature</span>
+                <span lang="fr">Saveur et Couleur Unique de la Nature</span>
+                <span lang="ru">Уникальный Вкус и Цвет Природы</span>
+                <span lang="sv">Naturens Unika Smak och Färg</span>
+            </p>
+            <a href="#products" class="btn">
+                <span lang="fa">مشاهده محصولات</span>
+                <span lang="en">View Products</span>
+                <span lang="fr">Voir les Produits</span>
+                <span lang="ru">Посмотреть Продукты</span>
+                <span lang="sv">Visa Produkter</span>
+            </a>
+        </div>
+    </section>
+
+    <section id="products" class="products">
+        <div class="products-content">
+            <h2>
+                <span lang="fa">محصولات ویژه</span>
+                <span lang="en">Featured Products</span>
+                <span lang="fr">Produits Spéciaux</span>
+                <span lang="ru">Особые Продукты</span>
+                <span lang="sv">Utvalda Produkter</span>
+            </h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/product1.jpg');"></div>
+                    <div class="product-info">
+                        <h3>
+                            <span lang="fa">زعفران سوپر نگین</span>
+                            <span lang="en">Super Negin Saffron</span>
+                            <span lang="fr">Safran Super Negin</span>
+                            <span lang="ru">Супер Нагинский Шафран</span>
+                            <span lang="sv">Super Negin Saffran</span>
+                        </h3>
+                        <p>
+                            <span lang="fa">زعفران با کیفیت عالی و رنگدهی بالا</span>
+                            <span lang="en">High-quality saffron with excellent coloring</span>
+                            <span lang="fr">Safran de haute qualité avec une coloration excellente</span>
+                            <span lang="ru">Высококачественный шафран с отличной окраской</span>
+                            <span lang="sv">Högkvalitativ saffran med utmärkt färgning</span>
+                        </p>
+                        <div class="price">
+                            <span lang="fa">۲,۵۰۰,۰۰۰ تومان</span>
+                            <span lang="en">2,500,000 Tomans</span>
+                            <span lang="fr">2 500 000 Tomans</span>
+                            <span lang="ru">2 500 000 Томанов</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/product2.jpg');"></div>
+                    <div class="product-info">
+                        <h3>
+                            <span lang="fa">زعفران پوشال</span>
+                            <span lang="en">Pushal Saffron</span>
+                            <span lang="fr">Safran Pushal</span>
+                            <span lang="ru">Шафран Пуша</span>
+                        </h3>
+                        <p>
+                            <span lang="fa">زعفران مرغوب با عطر و طعم بی‌نظیر</span>
+                            <span lang="en">Premium saffron with unique aroma and taste</span>
+                            <span lang="fr">Safran de qualité supérieure avec une saveur et un arôme uniques</span>
+                            <span lang="ru">Высококачественный шафран с уникальным ароматом и вкусом</span>
+                        </p>
+                        <div class="price">
+                            <span lang="fa">۲,۱۰۰,۰۰۰ تومان</span>
+                            <span lang="en">2,100,000 Tomans</span>
+                            <span lang="fr">2 100 000 Tomans</span>
+                            <span lang="ru">2 100 000 Томанов</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/product3.jpg');"></div>
+                    <div class="product-info">
+                        <h3>
+                            <span lang="fa">زعفران دسته</span>
+                            <span lang="en">Bunch Saffron</span>
+                            <span lang="fr">Safran Bunch</span>
+                            <span lang="ru">Шафран Пучка</span>
+                        </h3>
+                        <p>
+                            <span lang="fa">زعفران تازه با کیفیت صادراتی</span>
+                            <span lang="en">Fresh export-quality saffron</span>
+                            <span lang="fr">Safran frais de qualité d'exportation</span>
+                            <span lang="ru">Свежий шафран экспортного качества</span>
+                        </p>
+                        <div class="price">
+                            <span lang="fa">۱,۹۰۰,۰۰۰ تومان</span>
+                            <span lang="en">1,900,000 Tomans</span>
+                            <span lang="fr">1 900 000 Tomans</span>
+                            <span lang="ru">1 900 000 Томанов</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>
+                    <span lang="fa">درباره ما</span>
+                    <span lang="en">About Us</span>
+                    <span lang="fr">À propos de nous</span>
+                    <span lang="ru">О нас</span>
+                    <span lang="sv">Om Oss</span>
+                </h2>
+                <p>
+                    <span lang="fa">ما با بیش از ۲۰ سال تجربه در تولید و عرضه زعفران، همواره کیفیت و اصالت را در اولویت قرار داده‌ایم. محصولات ما از بهترین مزارع زعفران ایران تهیه می‌شوند و با استانداردهای بین‌المللی تولید می‌گردند.</span>
+                    <span lang="en">With over 20 years of experience in saffron production and distribution, we have always prioritized quality and authenticity. Our products are sourced from the finest saffron farms in Iran and produced according to international standards.</span>
+                    <span lang="fr">Avec plus de 20 ans d'expérience dans la production et la distribution du safran, nous avons toujours privilégié la qualité et l'authenticité. Nos produits sont issus des meilleures plantations de safran en Iran et produites selon des normes internationales.</span>
+                    <span lang="ru">С более чем 20-летним опытом производства и распределения шафрана, мы всегда отдавали предпочтение качеству и подлинности. Наши продукты получают из лучших плантаций шафрана в Иране и производятся в соответствии с международными стандартами.</span>
+                    <span lang="sv">Med över 20 års erfarenhet av saffransproduktion och distribution har vi alltid prioriterat kvalitet och autenticitet.</span>
+                </p>
+                <p>
+                    <span lang="fa">تیم ما متشکل از کارشناسان مجرب در زمینه کشت و تولید زعفران است که با دقت و حساسیت بالا، محصولات را کنترل و بسته‌بندی می‌کنند.</span>
+                    <span lang="en">Our team consists of experienced experts in saffron cultivation and production who carefully control and package products with high precision and sensitivity.</span>
+                    <span lang="fr">Notre équipe est composée d'experts en culture et en production de safran qui contrôlent et emballent les produits avec précision et sensibilité.</span>
+                    <span lang="ru">Наша команда состоит из опытных экспертов в области выращивания и производства шафрана, которые тщательно контролируют и упаковывают продукты с высокой точностью и чувствительностью.</span>
+                </p>
+            </div>
+            <div class="about-image"></div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>
+                    <span lang="fa">درباره ما</span>
+                    <span lang="en">About Us</span>
+                    <span lang="fr">À propos de nous</span>
+                    <span lang="ru">О нас</span>
+                    <span lang="sv">Om Oss</span>
+                </h3>
+                <p>
+                    <span lang="fa">ما با بیش از ۲۰ سال تجربه در تولید و عرضه زعفران، همواره کیفیت و اصالت را در اولویت قرار داده‌ایم.</span>
+                    <span lang="en">With over 20 years of experience in saffron production and distribution, we have always prioritized quality and authenticity.</span>
+                    <span lang="fr">Avec plus de 20 ans d'expérience dans la production et la distribution du safran, nous avons toujours privilégié la qualité et l'authenticité.</span>
+                    <span lang="ru">С более чем 20-летним опытом производства и распределения шафрана, мы всегда отдавали предпочтение качеству и подлинности.</span>
+                    <span lang="sv">Med över 20 års erfarenhet av saffransproduktion och distribution har vi alltid prioriterat kvalitet och autenticitet.</span>
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3>
+                    <span lang="fa">دسترسی سریع</span>
+                    <span lang="en">Quick Links</span>
+                    <span lang="fr">Liens Rapides</span>
+                    <span lang="ru">Быстрые Ссылки</span>
+                </h3>
+                <a href="#home">
+                    <i class="fas fa-home"></i>
+                    <span lang="fa" class="sr-only">خانه</span>
+                    <span lang="en" class="sr-only">Home</span>
+                    <span lang="fr" class="sr-only">Accueil</span>
+                    <span lang="ru" class="sr-only">Главная</span>
+                </a>
+                <a href="#products">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span lang="fa" class="sr-only">محصولات</span>
+                    <span lang="en" class="sr-only">Products</span>
+                    <span lang="fr" class="sr-only">Produits</span>
+                    <span lang="ru" class="sr-only">Продукты</span>
+                </a>
+                <a href="#about">
+                    <i class="fas fa-question fa-lg"></i>
+                    <span lang="fa" class="sr-only">درباره ما</span>
+                    <span lang="en" class="sr-only">About</span>
+                    <span lang="fr" class="sr-only">À propos</span>
+                    <span lang="ru" class="sr-only">О нас</span>
+                </a>
+                <a href="#contact">
+                    <i class="fas fa-phone"></i>
+                    <span lang="fa" class="sr-only">تماس با ما</span>
+                    <span lang="en" class="sr-only">Contact</span>
+                    <span lang="fr" class="sr-only">Contact</span>
+                    <span lang="ru" class="sr-only">Контакты</span>
+                </a>
+            </div>
+            <div class="footer-section">
+                <h3>
+                    <span lang="fa">ما را پیدا کنید</span>
+                    <span lang="en">Find Us</span>
+                    <span lang="fr">Trouvez-nous</span>
+                    <span lang="ru">Найдите нас</span>
+                    <span lang="sv">Hitta Oss</span>
+                </h3>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/zarnush.saffron/" target="_blank" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://t.me/zarnushsaffron" target="_blank" aria-label="Telegram">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@Zarnushsaffron" target="_blank" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>
+                <span lang="fa">© ۲۰۲۴ زرنوش. تمامی حقوق محفوظ است.</span>
+                <span lang="en">© 2024 Zarnoush. All rights reserved.</span>
+                <span lang="fr">© 2024 Zarnoush. Tous droits réservés.</span>
+                <span lang="ru">© 2024 Зарнуш. Все права защищены.</span>
+                <span lang="sv">© 2024 Zarnoush. Alla rättigheter förbehållna.</span>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleLangMenu() {
+            document.getElementById("langDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+            if (!event.target.matches('.lang-switch-btn') && !event.target.matches('.lang-switch-btn *')) {
+                var dropdowns = document.getElementsByClassName("lang-dropdown");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        function switchLanguage(lang) {
+            const body = document.body;
+            const options = document.querySelectorAll('.lang-option');
+            
+            // Remove all language classes
+            body.classList.remove('english', 'french', 'russian', 'swedish');
+            
+            // Remove active class from all options
+            options.forEach(opt => opt.classList.remove('active'));
+            
+            // Add appropriate class based on selected language
+            if (lang !== 'fa') {
+                body.classList.add(lang === 'en' ? 'english' : 
+                                 lang === 'fr' ? 'french' : 
+                                 lang === 'ru' ? 'russian' : 'swedish');
+            }
+            
+            // Add active class to selected language option
+            const activeOption = document.querySelector(`.lang-option[onclick="switchLanguage('${lang}')"]`);
+            activeOption.classList.add('active');
+            
+            // Close the dropdown
+            document.getElementById("langDropdown").classList.remove("show");
+        }
+
+        function toggleSearch() {
+            const searchBar = document.querySelector('.search-bar');
+            searchBar.classList.toggle('active');
+            if (searchBar.classList.contains('active')) {
+                searchBar.querySelector('input').focus();
+            }
+        }
+
+        function searchSite(query) {
+            if (query.length < 2) return; // Only search if 2 or more characters
+            
+            const searchText = query.toLowerCase();
+            const content = document.body.innerHTML.toLowerCase();
+            
+            // Clear previous highlights
+            document.body.innerHTML = document.body.innerHTML.replace(/<mark>/g, '').replace(/<\/mark>/g, '');
+            
+            if (searchText.length > 0) {
+                highlightText(document.body, searchText);
+                scrollToFirstMatch(searchText);
+            }
+        }
+
+        function highlightText(element, searchText) {
+            if (element.hasChildNodes()) {
+                element.childNodes.forEach(node => {
+                    if (node.nodeType === 3) { // Text node
+                        const text = node.textContent;
+                        const index = text.toLowerCase().indexOf(searchText);
+                        if (index >= 0) {
+                            const marked = document.createElement('mark');
+                            marked.style.backgroundColor = '#FFD700';
+                            marked.style.color = '#660000';
+                            marked.textContent = text.substring(index, index + searchText.length);
+                            
+                            const before = document.createTextNode(text.substring(0, index));
+                            const after = document.createTextNode(text.substring(index + searchText.length));
+                            
+                            const parent = node.parentNode;
+                            parent.insertBefore(before, node);
+                            parent.insertBefore(marked, node);
+                            parent.insertBefore(after, node);
+                            parent.removeChild(node);
+                        }
+                    } else {
+                        highlightText(node, searchText);
+                    }
+                });
+            }
+        }
+
+        function scrollToFirstMatch(searchText) {
+            const firstMatch = document.querySelector('mark');
+            if (firstMatch) {
+                firstMatch.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+            }
+        }
+    </script>
+</body>
+</html> 
